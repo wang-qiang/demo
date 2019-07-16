@@ -16,15 +16,15 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     testRunTitle: 'JUnit Test...'
-    codeCoverageToolOption: 'Cobertura'
-    codeCoverageClassFilter: '+:com.wq.demo,-:com.wq.demo.config'
-    codeCoverageFailIfEmpty: true
+    #codeCoverageToolOption: 'Cobertura'
+    #codeCoverageClassFilter: '+:com.wq.demo,-:com.wq.demo.config'
+    #codeCoverageFailIfEmpty: true
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: true
     effectivePomSkip: false
-    sonarQubeRunAnalysis: true
+    sonarQubeRunAnalysis: false
     sqMavenPluginVersionChoice: 'latest'
     checkStyleRunAnalysis: true
     pmdRunAnalysis: true
