@@ -13,16 +13,16 @@ steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'install'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    codeCoverageToolOption: 'JaCoCo'
+    testRunTitle: 'JUnit Test...'
+    codeCoverageToolOption: 'Cobertura'
+    codeCoverageClassFilter: '+:com.wq.demo,-:com.wq.demo.config'
+    codeCoverageFailIfEmpty: true
     javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
     mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
+    mavenAuthenticateFeed: true
     effectivePomSkip: false
     sonarQubeRunAnalysis: true
     sqMavenPluginVersionChoice: 'latest'
