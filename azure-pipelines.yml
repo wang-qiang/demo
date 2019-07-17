@@ -33,7 +33,7 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'wqk8s'
-    repository: 'app/demo'
+    repository: 'wqk8s/app'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: 'v-$(Build.BuildId)'
