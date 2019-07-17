@@ -29,3 +29,10 @@ steps:
     checkStyleRunAnalysis: true
     pmdRunAnalysis: true
     findBugsRunAnalysis: true
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'wqk8s'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+
