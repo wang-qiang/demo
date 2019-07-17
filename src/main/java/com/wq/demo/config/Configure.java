@@ -1,5 +1,9 @@
 package com.wq.demo.config;
 
+import com.alibaba.druid.support.http.StatViewServlet;
+import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -10,6 +14,20 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 @Configuration
 public class Configure implements WebMvcConfigurer {
+
+    @Bean
+    public ServletRegistrationBean druidServlet() {
+        return new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+    }
+
+    @Bean
+    public FilterRegistrationBean druidFilter() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new WebStatFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        return filterRegistrationBean;
+    }
 
     /**
      * 任务线程池.
