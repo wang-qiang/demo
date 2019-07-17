@@ -31,20 +31,9 @@ steps:
     findBugsRunAnalysis: true
 
 - task: Docker@2
-  displayName: 'Login to Docker Hub'
-  inputs:
-    command: 'login'
-    containerRegistry: 'wqk8s'
-
-- task: Docker@2
   inputs:
     containerRegistry: 'wqk8s'
-    repository: 'https://index.docker.io/v1/'
+    repository: 'wqk8s/app/demo'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: 'wqk8s/app/demo:$(Build.BuildId)'
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'wqk8s'
-    command: 'logout'
+    tags: 'v-$(Build.BuildId)'
