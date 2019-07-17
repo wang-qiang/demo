@@ -33,6 +33,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'wqk8s'
+    repository: 'https://index.docker.io/v1/'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-
